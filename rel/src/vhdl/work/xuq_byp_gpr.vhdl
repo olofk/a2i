@@ -701,7 +701,7 @@ rf1_is_mfocrf_latch : tri_rlmlatch_p
         QB               => ex1_rs1_l_b_q                                                                   );
 
    ex1_rs1_nimm_b_lat: entity tri.tri_inv_nlats(tri_inv_nlats)                                                
-     generic map (width=>  ex1_rs1_nimm_b_q'length, btr => "NLI0001_X1_A12TH", expand_type => expand_type, needs_sreset => 1, init => (ex1_rs1_nimm_b_q'range=>'0') ) port map (  
+     generic map (width=>  ex1_rs1_nimm_b_q'length, btr => "NLI0001_X1_A12TH", expand_type => expand_type, needs_sreset => 1, init => "00000" ) port map (  
         VD               => vdd                                                                              ,
         GD               => gnd                                                                              ,
         LCLK             => ex1x_lclk                                                                        ,

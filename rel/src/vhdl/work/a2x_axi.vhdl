@@ -37,28 +37,28 @@ entity a2x_axi is
       reset_n           : in std_logic;                        
       thold             : in std_logic;                        
       
-      core_id           : in std_logic_vector(0 to 7);         
-      thread_stop       : in std_logic_vector(0 to 3);         
-      thread_running    : out std_logic_vector(0 to 3);        
+      core_id           : in std_ulogic_vector(0 to 7);         
+      thread_stop       : in std_ulogic_vector(0 to 3);         
+      thread_running    : out std_ulogic_vector(0 to 3);        
       
       ext_mchk          : in std_logic_vector(0 to 3);         
       ext_checkstop     : in std_logic;                        
-      debug_stop        : in  std_logic;                       
-      mchk              : out std_logic_vector(0 to 3);        
-      recov_err         : out std_logic_vector(0 to 2);        
-      checkstop         : out std_logic_vector(0 to 2);        
+      debug_stop        : in  std_ulogic;                       
+      mchk              : out std_ulogic_vector(0 to 3);        
+      recov_err         : out std_ulogic_vector(0 to 2);        
+      checkstop         : out std_ulogic_vector(0 to 2);        
       a2l2_axi_err      : out std_logic_vector(0 to 3);        
       
-      crit_interrupt    : in std_logic_vector(0 to 3);         
-      ext_interrupt     : in std_logic_vector(0 to 3);         
-      perf_interrupt    : in std_logic_vector(0 to 3);         
+      crit_interrupt    : in std_ulogic_vector(0 to 3);         
+      ext_interrupt     : in std_ulogic_vector(0 to 3);         
+      perf_interrupt    : in std_ulogic_vector(0 to 3);         
       
       tb_update_enable  : in std_logic;                        
       tb_update_pulse   : in std_logic;                        
       
-      scom_sat_id       : in std_logic_vector(0 to 3);         
-      scom_dch_in       : in std_logic;
-      scom_cch_in       : in std_logic;
+      scom_sat_id       : in std_ulogic_vector(0 to 3);         
+      scom_dch_in       : in std_ulogic;
+      scom_cch_in       : in std_ulogic;
       scom_dch_out      : out std_logic;
       scom_cch_out      : out std_logic;
       
@@ -131,18 +131,18 @@ signal a2_nclk : clk_logic;
  
 signal an_ac_sg_7              :  std_logic;
 signal an_ac_back_inv          :  std_logic;
-signal an_ac_back_inv_addr     :  std_logic_vector(22 to 63);
+signal an_ac_back_inv_addr     :  std_ulogic_vector(22 to 63);
 signal an_ac_back_inv_lbit     :  std_logic;
 signal an_ac_back_inv_gs       :  std_logic;
 signal an_ac_back_inv_ind      :  std_logic;
 signal an_ac_back_inv_local    :  std_logic;
-signal an_ac_back_inv_lpar_id  :  std_logic_vector(0 to 7);
-signal an_ac_back_inv_target   :  std_logic_vector(0 to 4);
+signal an_ac_back_inv_lpar_id  :  std_ulogic_vector(0 to 7);
+signal an_ac_back_inv_target   :  std_ulogic_vector(0 to 4);
 signal an_ac_dcr_act           :  std_logic;
 signal an_ac_dcr_val           :  std_logic;
 signal an_ac_dcr_read          :  std_logic;
-signal an_ac_dcr_etid          :  std_logic_vector(0 to 1);
-signal an_ac_dcr_data          :  std_logic_vector(0 to 63);
+signal an_ac_dcr_etid          :  std_ulogic_vector(0 to 1);
+signal an_ac_dcr_data          :  std_ulogic_vector(0 to 63);
 signal an_ac_dcr_done          :  std_logic;
 signal an_ac_flh2l2_gate       :  std_logic;                       
 signal an_ac_reld_core_tag     :  std_logic_vector(0 to 4);
@@ -330,10 +330,10 @@ an_ac_psro_enable_dc <= (others => '0');
 an_ac_ccflush_dc <= '0'; 
 
 an_ac_flh2l2_gate <= flh2l2_gate;
-an_ac_external_mchk <= ext_mchk;
+an_ac_external_mchk <= std_ulogic_vector(ext_mchk);
 an_ac_checkstop <= ext_checkstop; 
 an_ac_debug_stop <= debug_stop;   
-an_ac_hang_pulse <= hang_pulse;
+an_ac_hang_pulse <= std_ulogic_vector(hang_pulse);
 thread_running <= ac_an_pm_thread_running;
 
 mchk           <= ac_an_machine_check;
@@ -413,12 +413,12 @@ acq: entity work.acq_soft(acq_soft)
       an_ac_dcr_done          => an_ac_dcr_done,
       an_ac_ext_interrupt     => ext_interrupt,
       an_ac_flh2l2_gate       => an_ac_flh2l2_gate,
-      an_ac_reld_core_tag     => an_ac_reld_core_tag,
-      an_ac_reld_data         => an_ac_reld_data,
+      an_ac_reld_core_tag     => std_ulogic_vector(an_ac_reld_core_tag),
+      an_ac_reld_data         => std_ulogic_vector(an_ac_reld_data),
       an_ac_reld_data_vld     => an_ac_reld_data_vld,
       an_ac_reld_ecc_err      => an_ac_reld_ecc_err,
       an_ac_reld_ecc_err_ue   => an_ac_reld_ecc_err_ue,
-      an_ac_reld_qw           => an_ac_reld_qw,
+      an_ac_reld_qw           => std_ulogic_vector(an_ac_reld_qw),
       an_ac_reld_data_coming  => an_ac_reld_data_coming,
       an_ac_reld_ditc         => an_ac_reld_ditc,
       an_ac_reld_crit_qw      => an_ac_reld_crit_qw,
@@ -428,12 +428,12 @@ acq: entity work.acq_soft(acq_soft)
       an_ac_req_spare_ctrl_a1 => an_ac_req_spare_ctrl_a1,
       an_ac_req_st_gather     => an_ac_req_st_gather,
       an_ac_req_st_pop        => an_ac_req_st_pop,
-      an_ac_req_st_pop_thrd   => an_ac_req_st_pop_thrd,
-      an_ac_reservation_vld   => an_ac_reservation_vld,
+      an_ac_req_st_pop_thrd   => std_ulogic_vector(an_ac_req_st_pop_thrd),
+      an_ac_reservation_vld   => std_ulogic_vector(an_ac_reservation_vld),
       an_ac_sleep_en          => an_ac_sleep_en,
-      an_ac_stcx_complete     => an_ac_stcx_complete,
-      an_ac_stcx_pass         => an_ac_stcx_pass,
-      an_ac_sync_ack          => an_ac_sync_ack,
+      an_ac_stcx_complete     => std_ulogic_vector(an_ac_stcx_complete),
+      an_ac_stcx_pass         => std_ulogic_vector(an_ac_stcx_pass),
+      an_ac_sync_ack          => std_ulogic_vector(an_ac_sync_ack),
       an_ac_icbi_ack          => an_ac_icbi_ack,
       an_ac_icbi_ack_thread   => an_ac_icbi_ack_thread,
       a2_nclk                 => a2_nclk,
@@ -561,19 +561,19 @@ port map(
 		err                     => a2l2_axi_err,
       ac_an_req               => ac_an_req,
       ac_an_req_endian        => ac_an_req_endian,
-      ac_an_req_ld_core_tag   => ac_an_req_ld_core_tag,
-      ac_an_req_ld_xfr_len    => ac_an_req_ld_xfr_len,
+      ac_an_req_ld_core_tag   => std_logic_vector(ac_an_req_ld_core_tag),
+      ac_an_req_ld_xfr_len    => std_logic_vector(ac_an_req_ld_xfr_len),
       ac_an_req_pwr_token     => ac_an_req_pwr_token,
-      ac_an_req_ra            => ac_an_req_ra,
-      ac_an_req_thread        => ac_an_req_thread,
-      ac_an_req_ttype         => ac_an_req_ttype,
-      ac_an_req_user_defined  => ac_an_req_user_defined,
+      ac_an_req_ra            => std_logic_vector(ac_an_req_ra),
+      ac_an_req_thread        => std_logic_vector(ac_an_req_thread),
+      ac_an_req_ttype         => std_logic_vector(ac_an_req_ttype),
+      ac_an_req_user_defined  => std_logic_vector(ac_an_req_user_defined),
       ac_an_req_wimg_g        => ac_an_req_wimg_g,
       ac_an_req_wimg_i        => ac_an_req_wimg_i,
       ac_an_req_wimg_m        => ac_an_req_wimg_m,
       ac_an_req_wimg_w        => ac_an_req_wimg_w,
-      ac_an_st_byte_enbl      => ac_an_st_byte_enbl,
-      ac_an_st_data           => ac_an_st_data,
+      ac_an_st_byte_enbl      => std_logic_vector(ac_an_st_byte_enbl),
+      ac_an_st_data           => std_logic_vector(ac_an_st_data),
       ac_an_st_data_pwr_token => ac_an_st_data_pwr_token,     
       an_ac_reld_core_tag     => an_ac_reld_core_tag,
       an_ac_reld_data         => an_ac_reld_data,

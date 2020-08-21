@@ -5537,7 +5537,7 @@ br_00: entity work.xuq_alu_mult_boothrow port map (
 
 
 
-    ex3_pp2_0s_lat:   entity tri.tri_inv_nlats(tri_inv_nlats) generic map (width=> 45,btr => "NLI0001_X1_A12TH", expand_type => expand_type, needs_sreset => 0, init=>(1 to 45=>'0')) port map (
+    ex3_pp2_0s_lat:   entity tri.tri_inv_nlats(tri_inv_nlats) generic map (width=> 45,btr => "NLI0001_X1_A12TH", expand_type => expand_type, needs_sreset => 0, init=>(0 to 44=>'0')) port map (
         VD               => vdd                          ,
         GD               => gnd                          ,
         LCLK             => ex3_lclk                     ,
@@ -5547,7 +5547,7 @@ br_00: entity work.xuq_alu_mult_boothrow port map (
         SCANOUT          => ex3_pp2_0s_lat_so            ,
         D                => ex3_pp2_0s_din(198 to 242)   ,
         QB               => ex3_pp2_0s_q_b(198 to 242)  );
-    ex3_pp2_0c_lat:   entity tri.tri_inv_nlats(tri_inv_nlats) generic map (width=> 43,btr => "NLI0001_X1_A12TH", expand_type => expand_type, needs_sreset => 0, init=>(1 to 43=>'0')   ) port map (
+    ex3_pp2_0c_lat:   entity tri.tri_inv_nlats(tri_inv_nlats) generic map (width=> 43,btr => "NLI0001_X1_A12TH", expand_type => expand_type, needs_sreset => 0, init=>(0 to 42=>'0')   ) port map (
         VD               => vdd                          ,
         GD               => gnd                          ,
         LCLK             => ex3_lclk                     ,
@@ -5558,7 +5558,7 @@ br_00: entity work.xuq_alu_mult_boothrow port map (
         D                => ex3_pp2_0c_din(198 to 240)   ,
         QB               => ex3_pp2_0c_q_b(198 to 240)  );
 
-    ex3_pp2_1s_lat:   entity tri.tri_inv_nlats(tri_inv_nlats) generic map (width=> 47,btr => "NLI0001_X1_A12TH", expand_type => expand_type, needs_sreset => 0, init=>(1 to 47=>'0')   ) port map (
+    ex3_pp2_1s_lat:   entity tri.tri_inv_nlats(tri_inv_nlats) generic map (width=> 47,btr => "NLI0001_X1_A12TH", expand_type => expand_type, needs_sreset => 0, init=>(0 to 46=>'0')   ) port map (
         VD               => vdd                          ,
         GD               => gnd                          ,
         LCLK             => ex3_lclk                     ,
@@ -5569,7 +5569,7 @@ br_00: entity work.xuq_alu_mult_boothrow port map (
         D                => ex3_pp2_1s_din(208 to 254)   ,
         QB               => ex3_pp2_1s_q_b(208 to 254)  );
 
-    ex3_pp2_1c_lat:   entity tri.tri_inv_nlats(tri_inv_nlats) generic map (width=> 45,btr => "NLI0001_X1_A12TH", expand_type => expand_type, needs_sreset => 0, init=>(1 to 45=>'0')   ) port map (
+    ex3_pp2_1c_lat:   entity tri.tri_inv_nlats(tri_inv_nlats) generic map (width=> 45,btr => "NLI0001_X1_A12TH", expand_type => expand_type, needs_sreset => 0, init=>(0 to 44=>'0')   ) port map (
         VD               => vdd                          ,
         GD               => gnd                          ,
         LCLK             => ex3_lclk                     ,
@@ -5580,7 +5580,7 @@ br_00: entity work.xuq_alu_mult_boothrow port map (
         D                => ex3_pp2_1c_din(208 to 252)   ,
         QB               => ex3_pp2_1c_q_b(208 to 252)  );
 
-    ex3_pp2_2s_lat:   entity tri.tri_inv_nlats(tri_inv_nlats) generic map (width=> 45,btr => "NLI0001_X1_A12TH", expand_type => expand_type, needs_sreset => 0, init=>(1 to 45=>'0')   ) port map (
+    ex3_pp2_2s_lat:   entity tri.tri_inv_nlats(tri_inv_nlats) generic map (width=> 45,btr => "NLI0001_X1_A12TH", expand_type => expand_type, needs_sreset => 0, init=>(0 to 44=>'0')   ) port map (
         VD               => vdd                          ,
         GD               => gnd                          ,
         LCLK             => ex3_lclk                     ,
@@ -5591,7 +5591,7 @@ br_00: entity work.xuq_alu_mult_boothrow port map (
         D                => ex3_pp2_2s_din(220 to 264)   ,
         QB               => ex3_pp2_2s_q_b(220 to 264)  );
 
-    ex3_pp2_2c_lat:   entity tri.tri_inv_nlats(tri_inv_nlats) generic map (width=> 44,btr => "NLI0001_X1_A12TH", expand_type => expand_type, needs_sreset => 0, init=>(1 to 44=>'0')   ) port map (
+    ex3_pp2_2c_lat:   entity tri.tri_inv_nlats(tri_inv_nlats) generic map (width=> 44,btr => "NLI0001_X1_A12TH", expand_type => expand_type, needs_sreset => 0, init=>(0 to 43=>'0')   ) port map (
         VD               => vdd                          ,
         GD               => gnd                          ,
         LCLK             => ex3_lclk                     ,
@@ -5603,7 +5603,7 @@ br_00: entity work.xuq_alu_mult_boothrow port map (
         QB               => ex3_pp2_2c_q_b(220 to 263)  );
 
 
-    ex4_pp5_0s_lat:   entity tri.tri_inv_nlats(tri_inv_nlats) generic map (width=> 69,btr => "NLI0001_X2_A12TH", expand_type => expand_type, needs_sreset => 0, init=>(1 to 69=>'0')   ) port map (
+    ex4_pp5_0s_lat:   entity tri.tri_inv_nlats(tri_inv_nlats) generic map (width=> 69,btr => "NLI0001_X2_A12TH", expand_type => expand_type, needs_sreset => 0, init=>(0 to 68=>'0')   ) port map (
         VD               => vdd                          ,
         GD               => gnd                          ,
         LCLK             => ex4_lclk                     ,
@@ -5614,7 +5614,7 @@ br_00: entity work.xuq_alu_mult_boothrow port map (
         D                => ex4_pp5_0s_din(196 to 264)   ,
         QB               => ex4_pp5_0s_q_b(196 to 264)  );
 
-    ex4_pp5_0c_lat:   entity tri.tri_inv_nlats(tri_inv_nlats) generic map (width=> 68,btr => "NLI0001_X2_A12TH", expand_type => expand_type, needs_sreset => 0, init=>(1 to 68=>'0')   ) port map (
+    ex4_pp5_0c_lat:   entity tri.tri_inv_nlats(tri_inv_nlats) generic map (width=> 68,btr => "NLI0001_X2_A12TH", expand_type => expand_type, needs_sreset => 0, init=>(0 to 67=>'0')   ) port map (
         VD               => vdd                          ,
         GD               => gnd                          ,
         LCLK             => ex4_lclk                     ,

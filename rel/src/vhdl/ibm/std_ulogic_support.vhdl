@@ -188,7 +188,7 @@ package std_ulogic_support is
 
   -- std_logic_vector to other types
 --  function tconv( s : std_logic_vector ) return  bit_vector;
---  function tconv( s : std_logic_vector ) return  std_ulogic_vector;
+  function tconv( s : std_logic_vector ) return  std_ulogic_vector;
 --  function tconv( s : std_logic_vector ) return  integer;
 -- synopsys translate_off
 --  function tconv( s : std_logic_vector ) return  string;
@@ -1914,26 +1914,26 @@ package body std_ulogic_support is
   --  return result;
   --end;
 
-  --function tconv  ( s : std_logic_vector ) return std_ulogic_vector is
-  --  alias sv : std_logic_vector ( 1 to s'length ) is s;
-  --  variable result : std_ulogic_vector ( 1 to s'length ) := (others => 'X');
-  ---- pragma built_in SYN_FEED_THRU
-  --begin
-  --  for i in result'range loop
-  --    case sv(i) is
-  --      when '0' => result(i) := '0';
-  --      when '1' => result(i) := '1';
-  --      when 'L' => result(i) := '0';
-  --      when 'H' => result(i) := '1';
-  --      when 'W' => result(i) := 'W';
-  --      when '-' => result(i) := '-';
-  --      when 'U' => result(i) := 'U';
-  --      when 'X' => result(i) := 'X';
-  --      when 'Z' => result(i) := 'Z';
-  --    end case;
-  --  end loop;
-  --  return result;
-  --end;
+  function tconv  ( s : std_logic_vector ) return std_ulogic_vector is
+    alias sv : std_logic_vector ( 1 to s'length ) is s;
+    variable result : std_ulogic_vector ( 1 to s'length ) := (others => 'X');
+  -- pragma built_in SYN_FEED_THRU
+  begin
+    for i in result'range loop
+      case sv(i) is
+        when '0' => result(i) := '0';
+        when '1' => result(i) := '1';
+        when 'L' => result(i) := '0';
+        when 'H' => result(i) := '1';
+        when 'W' => result(i) := 'W';
+        when '-' => result(i) := '-';
+        when 'U' => result(i) := 'U';
+        when 'X' => result(i) := 'X';
+        when 'Z' => result(i) := 'Z';
+      end case;
+    end loop;
+    return result;
+  end;
 
   --function tconv  ( s : std_logic_vector ) return integer is
   --  variable int_result : integer := 0;
@@ -2282,11 +2282,17 @@ package body std_ulogic_support is
   function std_match (l, r: std_ulogic_vector) return std_ulogic is
     variable result : boolean ;
   begin
-    if (l ?= r) then    
-       return '1' ;
-    else 
-       return '0' ;
+    if l = r then
+      return '1';
+    else
+      return '0';
     end if;
+--    for i in l'range loop
+--      if not std_match(l(i), r(i)) then
+--        return '0';
+--      end if;
+--    end loop;
+--    return '1' ;
   end std_match;
 
   -------------------------------------------------------------------

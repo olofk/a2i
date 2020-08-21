@@ -16,23 +16,23 @@ use ieee.numeric_std.all;
 --use ibm.std_ulogic_support.all;
 --use ibm.std_ulogic_function_support.all;
 
-entity RAMB16_S9_S9 is
+entity RAMB16_S36_S36 is
 	generic (
 		SIM_COLLISION_CHECK : string := "ALL"
 	);
 	port (
-		DOA : out std_logic_vector(7 downto 0);
-		DOB : out std_logic_vector(7 downto 0);
-		DOPA : out std_logic_vector(0 downto 0);
-		DOPB : out std_logic_vector(0 downto 0);
-		ADDRA : in std_logic_vector(10 downto 0);
-		ADDRB : in std_logic_vector(10 downto 0);
+		DOA : out std_logic_vector(31 downto 0);
+		DOB : out std_logic_vector(31 downto 0);
+		DOPA : out std_logic_vector(3 downto 0);
+		DOPB : out std_logic_vector(3 downto 0);
+		ADDRA : in std_logic_vector(8 downto 0);
+		ADDRB : in std_logic_vector(8 downto 0);
 		CLKA : in std_ulogic;
 		CLKB : in std_ulogic;
-		DIA : in std_logic_vector(7 downto 0);
-		DIB : in std_logic_vector(7 downto 0);
-		DIPA : in std_logic_vector(0 downto 0);
-		DIPB : in std_logic_vector(0 downto 0);
+		DIA : in std_logic_vector(31 downto 0);
+		DIB : in std_logic_vector(31 downto 0);
+		DIPA : in std_logic_vector(3 downto 0);
+		DIPB : in std_logic_vector(3 downto 0);
 		ENA : in std_ulogic;
 		ENB : in std_ulogic;
 		SSRA : in std_ulogic;
@@ -40,36 +40,33 @@ entity RAMB16_S9_S9 is
 		WEA : in std_ulogic;
 		WEB : in std_ulogic
 	);
-end RAMB16_S9_S9;
+end RAMB16_S36_S36;
 
-architecture RAMB16_S9_S9 of RAMB16_S9_S9 is
+architecture RAMB16_S36_S36 of RAMB16_S36_S36 is
 
-  signal DINA, DINB     : std_logic_vector(8 downto 0);
-  signal DOUTA, DOUTB   : std_logic_vector(8 downto 0);
+  signal DOUTA, DOUTB   : std_logic_vector(35 downto 0);
 
-  TYPE mem IS ARRAY(0 TO 2047) OF std_logic_vector(8 DOWNTO 0);
+  TYPE mem IS ARRAY(0 to 511) OF std_logic_vector(35 DOWNTO 0);
   SIGNAL ram_block : mem;
 
 begin
 
-DINA   <= DIPA & DIA;
-DOPA(0) <= DOUTA(8);
-DOA    <= DOUTA(7 downto 0);
+DOPA   <= DOUTA(35 downto 32);
+DOA    <= DOUTA(31 downto 0);
 
-DINB   <= DIPB & DIB;
-DOPB(0) <= DOUTB(8);
-DOB    <= DOUTB(7 downto 0);
+DOPB   <= DOUTB(35 downto 32);
+DOB    <= DOUTB(31 downto 0);
 
 ram: process (clka) is
 begin  -- process ram
   if rising_edge(clka) then
     if wea then
-      ram_block(to_integer(unsigned(addra))) <= dina;
+      ram_block(to_integer(unsigned(addra))) <= dipa & dia;
     end if;
     douta <= ram_block(to_integer(unsigned(addra)));
 
     if web then
-      ram_block(to_integer(unsigned(addrb))) <= dinb;
+      ram_block(to_integer(unsigned(addrb))) <= dipb & dib;
     end if;
     doutb <= ram_block(to_integer(unsigned(addrb)));
 
@@ -77,4 +74,4 @@ begin  -- process ram
   end if;
 end process ram;
 
-end RAMB16_S9_S9;
+end RAMB16_S36_S36;

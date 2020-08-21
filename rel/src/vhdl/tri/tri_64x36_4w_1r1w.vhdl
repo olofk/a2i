@@ -248,6 +248,9 @@ begin
       signal ramb_data_out      : RAMB_DATA_ARRAY(wr_way'range);
       signal ramb_rd_addr       : std_logic_vector(0 to ramb_base_addr - 1);
       signal ramb_wr_addr       : std_logic_vector(0 to ramb_base_addr - 1);
+      signal ramb_data_out_temp : std_logic_vector(0 to (ramb_base_width*ramb_width_mult - 1));
+      signal ramb_data_out_temp2 : std_logic_vector(0 to port_bitwidth-1);
+      signal data_out_temp : std_ulogic_vector(port_bitwidth-1 downto 0);
 
       signal tidn               : std_ulogic;
       signal unused             : std_ulogic;
@@ -309,7 +312,10 @@ begin
 
         end generate ax;
 
-        data_out(w*port_bitwidth to ((w+1)*port_bitwidth)-1 ) <= tconv( ramb_data_out(w)(0 to port_bitwidth-1) );
+        ramb_data_out_temp <= ramb_data_out(w);
+        ramb_data_out_temp2 <= ramb_data_out_temp(0 to port_bitwidth-1);
+        data_out_temp <= tconv( ramb_data_out_temp2);
+        data_out(w*port_bitwidth to ((w+1)*port_bitwidth)-1 ) <= data_out_temp;
 
       end generate aw;
 

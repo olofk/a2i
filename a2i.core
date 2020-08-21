@@ -53,7 +53,7 @@ filesets:
       - rel/src/vhdl/tri/tri_inv_nlats_wlcb.vhdl
       - rel/src/vhdl/tri/tri_32x35_8w_1r1w.vhdl
       - rel/src/vhdl/tri/tri_direct_err_rpt.vhdl
-      - rel/src/vhdl/tri/ramb16_s18_s18.vhdl
+      - rel/src/vhdl/tri/ramb16_s18_s18_generic.vhdl
       - rel/src/vhdl/tri/tri_aoi22_nlats_wlcb.vhdl
       - rel/src/vhdl/tri/tri_nlat_scan.vhdl
       - rel/src/vhdl/tri/tri_144x78_2r2w.vhdl
@@ -61,7 +61,7 @@ filesets:
       - rel/src/vhdl/tri/tri_256x162_4w_0.vhdl
       - rel/src/vhdl/tri/tri_lcbcntl_array_mac.vhdl
       - rel/src/vhdl/tri/tri_caa_prism_abist.vhdl
-      - rel/src/vhdl/tri/ramb16_s36_s36.vhdl
+      - rel/src/vhdl/tri/ramb16_s36_s36_generic.vhdl
       - rel/src/vhdl/tri/tri_cam_16x143_1r1w1c_matchline.vhdl
       - rel/src/vhdl/tri/tri_lcbnd.vhdl
       - rel/src/vhdl/tri/tri_cam_parerr_mac.vhdl
@@ -321,5 +321,8 @@ targets:
     filesets : [ibm, support, clib, tri, rtl]
     toplevel : a2x_axi
     tools:
+      quartus:
+        family : Cyclone 10 LP
+        device : 10CL025YU256C8G
       vivado:
         pnr : none
