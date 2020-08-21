@@ -40,7 +40,7 @@ filesets:
       - rel/src/vhdl/tri/tri_slat_scan.vhdl
       - rel/src/vhdl/tri/tri_plat.vhdl
       - rel/src/vhdl/tri/tri_64x36_4w_1r1w.vhdl
-      - rel/src/vhdl/tri/ramb16_s9_s9.vhdl
+      - rel/src/vhdl/tri/ramb16_s9_s9_generic.vhdl
       - rel/src/vhdl/tri/tri_lcbcntl_mac.vhdl
       - rel/src/vhdl/tri/tri_144x78_2r2w_eco.vhdl
       - rel/src/vhdl/tri/tri_psro_soft.vhdl
